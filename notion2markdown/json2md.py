@@ -202,7 +202,7 @@ class JsonToMd:
             if value.get("start") and not value.get("end"):
                 date_str = self.json2md(value["start"])
                 try:
-                    if 'T' in date_str:
+                    if isinstance(date_str, str) and 'T' in date_str:
                         # For ISO format dates like '2025-03-10T11:00:00.000+05:00'
                         # Remove timezone part for parsing if present
                         date_part = date_str.split('T')[0]
